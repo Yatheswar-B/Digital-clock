@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    *{
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+    }
+     body{
+        background-image: url(./pexels-pixabay-268533.jpg);
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: cover;
+     }
+</style>
+<body>
+    <div id="times"></div>
+</body>
+<script>
+    let div=document.createElement("times");
+    div.setAttribute("class","times");
+    console.log(div.getAttribute('class'));
+    document.body.append(div);
+    document.body.style.width='100%';
+    document.body.style.height='90vh';
+    document.body.style.display='flex';
+    document.body.style.justifyContent='center';
+    div.style.padding='50px 50px';
+    div.style.fontSize='80px';  
+    div.style.borderRadius='30px'
+    div.style.color='white';
+
+    function time(){
+        let date=new Date(); 
+        let hour=date.getHours();
+        let minute=date.getMinutes();
+        let seconds=date.getSeconds();
+        let session="PM";
+        
+        if (hour>12) {
+           hour-=12;
+           session='AM'
+        }
+        if(hour==0){
+            hour=12;
+        }
+
+        if (minute<10) {
+            minute="0"+minute;
+        }
+        if (seconds<10) {
+            seconds="0"+seconds;
+        }
+        
+        
+        div.innerText=hour+':'+minute+':'+seconds+'-'+session;
+
+    }
+       
+   
+    setInterval(()=>{
+        time();
+    },1000)
+     time();
+</script>
+</html>
